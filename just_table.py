@@ -9,27 +9,43 @@ This plugin allows you to create easily table.
 from __future__ import unicode_literals
 import re
 
-regex = re.compile(r"(<p>\[jtable\])(.+)(\[\/jtable\]<\/p>)", re.DOTALL)
+ai_regex = re.compile(r"id ?\= ?\" ?(1) ?\"")
+th_regex = re.compile(r"th ?\= ?\" ?(0) ?\"")
+cap_regex = re.compile("caption ?\= ?\"(.+?)\"")
+main_regex = re.compile(r"(\[jtable(.*?)\]([\s\S]*?)\[\/jtable\])")
 
 table_template = """
-<table>
-    <thead>
-    <tr>
-        {% for head in heads %}
-        <th align="center">{{ head }}</th>
-        {% endfor %}
-    </tr>
-    </thead>
-    <tbody>
-        {% for body in bodies %}
+<div class="justtable">
+    <table>
+        {% if caption %}
+        <caption> {{ caption }} </caption>
+        {% endif %}
+        {% if th != 0 %}
+        <thead>
         <tr>
-            {% for entry in body %}
-            <td align="center">{{ entry }}</td>
+            {% if ai != 0 %}
+            <th> No. </th>
+            {% endif %}
+            {% for head in heads %}
+            <th>{{ head }}</th>
             {% endfor %}
         </tr>
-        {% endfor %}
-    </tbody>
-</table>
+        </thead>
+        {% endif %}
+        <tbody>
+            {% for body in bodies %}
+            <tr>
+                {% if ai != 0 %}
+                <td> {{ loop.index }} </td>
+                {% endif %}
+                {% for entry in body %}
+                <td>{{ entry }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 """
 
 
@@ -40,11 +56,24 @@ def generate_table(generator):
     template = Template(table_template)
 
     for article in generator.articles:
-        for match in regex.findall(article._content):
-            data = match[1].strip().split('\n')
-            if len(data) > 2:
-                heads = data[0].split(',')
-                bodies = [n.split(',') for n in data[1:]]
+        for match in main_regex.findall(article._content):
+            param = {"ai": 0, "th": 1, "caption": ""}
+            if ai_regex.search(match[1]):
+                param['ai'] = 1
+            if cap_regex.search(match[1]):
+                param['caption'] = cap_regex.findall(match[1])[0]
+            if th_regex.search(match[1]):
+                param["th"] = 0
+            data = match[2].strip().split('\n')
+            if len(data) > 2 or len(data) == 1 and param['th'] == 0:
+                if param['th'] != 0:
+                    heads = data[0].split(',')
+                    begin = 1
+                else:
+                    heads = None
+                    begin = 0
+
+                bodies = [n.split(',') for n in data[begin:]]
 
                 # Create a context to render with
                 context = generator.context.copy()
@@ -52,11 +81,11 @@ def generate_table(generator):
                     'heads': heads,
                     'bodies': bodies,
                 })
+                context.update(param)
 
                 # Render the template
                 replacement = template.render(context)
-
-                article._content = article._content.replace(''.join(match), replacement)
+                article._content = article._content.replace(''.join(match[0]), replacement)
 
 
 def register():
