@@ -14,7 +14,7 @@ It looks easy, but sometimes you want to create basic table. Actually, I hate ab
 
 
 
-* ##### Basic table
+*  Basic table
 
 
 
@@ -36,7 +36,7 @@ Year,Make,Model,Length
 
 
 
-* ##### More complicated
+*  More complicated
 
 
 ```
@@ -59,7 +59,7 @@ Year,Make,Model,Description,Price
 | 1996 | Jeep  | Grand Cherokee                              | MUST SELL!    | 4799.00 |
 
 
-* ##### Table with no heading
+*  Table with no heading
 
 
 
@@ -82,7 +82,7 @@ row3col1,row3col2,row3col3
 
 
 
-* ##### Table with caption without heading
+*  Table with caption without heading
 
 
 
@@ -105,7 +105,7 @@ row3col1,row3col2,row3col3
 or if you want heading and caption both , you can delete ```th="0"```
 
 
-* ##### Table with auto index and It'll start from 1
+*  Table with auto index and It'll start from 1
 
 
 
@@ -126,13 +126,6 @@ row4col1,row4col2,row4col3
 | 2 | row2col1 | row2col2 |  row2col3  |
 | 3 | row3col1 | row3col2 |  row3col3  |
 | 4 | row4col1 | row4col2 |  row4col3  |
-
-
-
-
-### Version
-3.0.2
-
 
 
 ### Installation
