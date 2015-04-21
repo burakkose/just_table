@@ -9,7 +9,7 @@ This plugin allows you to create easily table.
 from __future__ import unicode_literals
 import re
 
-ai_regex = re.compile(r"id ?\= ?\" ?(1) ?\"")
+ai_regex = re.compile(r"ai ?\= ?\" ?(1) ?\"")
 th_regex = re.compile(r"th ?\= ?\" ?(0) ?\"")
 cap_regex = re.compile("caption ?\= ?\"(.+?)\"")
 main_regex = re.compile(r"(\[jtable(.*?)\]([\s\S]*?)\[\/jtable\])")
@@ -23,7 +23,7 @@ table_template = """
         {% if th != 0 %}
         <thead>
         <tr>
-            {% if ai != 0 %}
+            {% if ai == 1 %}
             <th> No. </th>
             {% endif %}
             {% for head in heads %}
@@ -35,7 +35,7 @@ table_template = """
         <tbody>
             {% for body in bodies %}
             <tr>
-                {% if ai != 0 %}
+                {% if ai == 1 %}
                 <td> {{ loop.index }} </td>
                 {% endif %}
                 {% for entry in body %}
