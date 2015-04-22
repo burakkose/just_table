@@ -1,1 +1,1 @@
-from .my import *
+from .just_table import *
