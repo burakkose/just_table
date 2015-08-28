@@ -8,7 +8,7 @@ Just table is a plugin for Pelican to create easily table. Before this plugin, y
 |   |   |   |   |   |
 |   |   |   |   |   |
 ```
-It looks easy, but sometimes you want to create basic table. Actually, I hate above way. Now, Just Table's way.
+It looks easy, but sometimes you want to create a basic table. Actually, I hate above way. Now, Just Table's way.
 
 ## Usage
 
@@ -102,7 +102,7 @@ row3col1,row3col2,row3col3
 | row3col1 | row3col2 | row3col3 |
 
 
-or if you want heading and caption both , you can delete ```th="0"```
+or if you want to head and caption both, you can delete ```th="0"```
 
 
 *  Table with auto index and It'll start from 1
