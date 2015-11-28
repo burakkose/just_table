@@ -1,6 +1,6 @@
 # Just Table
 
-Just table is a plugin for Pelican to create easily table. Before this plugin, you can create tables this way or maybe another way.
+Just table is a plugin for Pelican to create an easily table. Before this plugin, you can create tables like below way or maybe another way that I don't know :).
 ```
 |   |   |   |   |   |
 |---|---|---|---|---|
@@ -8,8 +8,7 @@ Just table is a plugin for Pelican to create easily table. Before this plugin, y
 |   |   |   |   |   |
 |   |   |   |   |   |
 ```
-It looks easy, but sometimes you want to create a basic table. Actually, I hate above way. Now, Just Table's way.
-
+It looks easy, but sometimes you want to create a basic table quickly by the different way. Actually,  I hate above way. Now, time to the just table's way.
 ## Usage
 
 
