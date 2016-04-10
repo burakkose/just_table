@@ -127,6 +127,20 @@ row4col1,row4col2,row4col3
 | 4 | row4col1 | row4col2 |  row4col3  |
 
 
+*  Custom separator for specific table
+
+
+```
+[jtable separator="|"]
+head1|head2|head3
+row1col1|row1col2|row1col3
+row2col1|row2col2|row2col3
+row3col1|row3col2|row3col3
+row4col1|row4col2|row4col3
+[/jtable]
+```
+
+
 ### Installation
 
 Add the plugin path to your PLUGINS setting in the pelicanconf.py file.
@@ -134,6 +148,56 @@ Add the plugin path to your PLUGINS setting in the pelicanconf.py file.
 
 
 ```PLUGINS = [... , 'just_table' , ... ]```
+
+
+### Configuration
+
+**Custom template**
+
+You can customize table look by specifying `JTABLE_TEMPLATE` in your
+`pelicanconf.py`. For example to match your bootstrap theme:
+
+````
+JTABLE_TEMPLATE = """
+<table class="table table-hover">
+    {% if caption %}
+    <caption> {{ caption }} </caption>
+    {% endif %}
+    {% if th != 0 %}
+    <thead>
+    <tr>
+        {% if ai == 1 %}
+        <th> No. </th>
+        {% endif %}
+        {% for head in heads %}
+        <th>{{ head }}</th>
+        {% endfor %}
+    </tr>
+    </thead>
+    {% endif %}
+    <tbody>
+        {% for body in bodies %}
+        <tr>
+            {% if ai == 1 %}
+            <td> {{ loop.index }} </td>
+            {% endif %}
+            {% for entry in body %}
+            <td>{{ entry }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+"""
+````
+
+**Custom separator**
+
+Custom separator for all tables also can be specified:
+
+````
+JTABLE_SEPARATOR = '|'
+````
 
 
 ### Todo's
