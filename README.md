@@ -143,11 +143,13 @@ row4col1|row4col2|row4col3
 
 ### Installation
 
-Add the plugin path to your PLUGINS setting in the pelicanconf.py file.
+- When using pip: `pip install pelican-just-table`
+- When using poetry: `poetry add pelican-just-table`
+- When using pipenv: `pipenv install pelican-just-table`
 
+Now add the plugin the Pelican ª`PLUGINS` setting
 
-
-```PLUGINS = [... , 'just_table' , ... ]```
+```PLUGINS = [... , 'pelican_just_table' , ... ]```
 
 
 ### Configuration
