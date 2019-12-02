@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "pelican-just-table"
+version = "0.1.0"
+description = "Just table is a plugin for Pelican to create an easily table."
+authors = [
+    "Burak Kose <burakks41@gmail.com>",
+    "Johan Vergeer <johanvergeer@gmail.com>",
+]
+license = "GPL"
+keywords = ["pelican"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+jinja2 = "^2.10"
+pelican = "^4.2"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
