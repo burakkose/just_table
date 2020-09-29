@@ -1,1 +1,2 @@
-from .just_table import *
+"""Initialize plugin."""
+from .just_table import *  # noqa

@@ -1,0 +1,21 @@
+os: linux
+
+dist: focal
+
+git:
+  depth: 1
+
+cache: false
+
+language: python
+
+python: 3.8
+
+install:
+- pip install --upgrade pip
+- pip install pelican flake8 pydocstyle pylint_runner
+
+script:
+- flake8 .
+- pydocstyle .
+- pylint_runner

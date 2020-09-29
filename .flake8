@@ -1,0 +1,5 @@
+[flake8]
+
+# [INFO] 120 max line length, 80 is small:
+# https://stackoverflow.com/a/111015/5951529
+max_line_length = 120

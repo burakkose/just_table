@@ -1,0 +1,11 @@
+[FORMAT]
+
+max-line-length=120
+
+[CLASSES]
+
+# [INFO] Get protected member “_content” outside the class:
+# https://docs.quantifiedcode.com/python-anti-patterns/correctness/accessing_a_protected_member_from_outside_the_class.html
+# https://github.com/getpelican/pelican/blob/master/pelican/contents.py#L45
+# https://docs.pylint.org/en/1.6.0/features.html#id34
+exclude-protected=_content
